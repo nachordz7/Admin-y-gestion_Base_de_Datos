@@ -1,0 +1,31 @@
+DROP DATABASE IF EXISTS ejercicio;
+CREATE DATABASE ejercicio;
+USE ejercicio;
+
+CREATE TABLE PRODUCTOS(
+    codigo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_p VARCHAR(50),
+    precio DECIMAL(10,2)
+);
+
+CREATE TABLE CLIENTES(
+    DNI INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    direccion VARCHAR(150),
+    f_nac DATE
+);
+
+CREATE TABLE COMPRAS(
+    cantidad INT,
+    cod_p INT, 
+    DNI INT, 
+    FOREIGN KEY(cod_p) REFERENCES PRODUCTOS(codigo),
+    FOREIGN KEY(DNI) REFERENCES CLIENTES(DNI)
+);
+
+CREATE TABLE PROVEEDORES(
+    NIF INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_prov VARCHAR(50), 
+    direccion VARCHAR(150)
+);
